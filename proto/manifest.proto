@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package swgoh;
+
+message RawAssetManifest {
+  int32 version = 1;
+  repeated RawAssetManifestRecord records = 2;
+  string platform = 3;
+  string tex_format = 4;
+  string environment = 5;
+  uint64 timestamp = 6;
+  uint64 revision = 7;
+}
+
+message RawAssetManifestRecord {
+  string name = 1;
+  uint64 version = 2;
+  int32 size = 3;
+  int32 uncompressed_size = 4;
+  bool shared = 5;
+  int32 rank = 6;
+  int32 packageType = 7;
+  repeated RawAssetManifestRecordEntry entries = 8;
+  repeated string dependencies = 9;
+  uint32 crc = 10;
+}
+
+message RawAssetManifestRecordEntry {
+  string asset_name = 1;
+  int32 runtime_size = 2;
+  int32 clone_runtime_size = 3;
+}
